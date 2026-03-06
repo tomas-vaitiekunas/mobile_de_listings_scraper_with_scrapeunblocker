@@ -73,7 +73,33 @@ To start a standard scraping job, run the following command from the project roo
 ```bash
 scrapy crawl mobile_de -o output.json
 ```
-This will run the spider and save the scraped listings into an `output.json` file.
+This will run the spider and save the scraped listings into an `output.json` file. 
+
+**Note:** The `output.json` file is currently overwritten for every page processed, so the final file will only contain listings from the last successfully scraped page.
+
+## Scraped Data Fields
+
+The `output.json` file contains a list of car listings with the following fields:
+
+- `url`: Direct link to the vehicle's detail page.
+- `title`: The vehicle make, model, and description.
+- `price`: The gross price of the vehicle.
+- `registration_date`: Month and year of first registration.
+- `mileage`: Total distance the car has been driven.
+- `power`: Engine power output.
+- `seller_type`: Type of seller (e.g., Dealer or Private).
+- `location`: The location of the vehicle.
+
+## Pagination and Limits
+
+By default, the scraper will crawl **all available pages** of the search results by following the "Next Page" logic until no more results are found.
+
+If you wish to limit the number of pages to scrape, you can add the `CLOSESPIDER_PAGECOUNT` setting to your `mobile_de_scraper/settings.py` or pass it as an argument:
+
+```bash
+# Limit to 5 pages via CLI
+scrapy crawl mobile_de -o output.json -s CLOSESPIDER_PAGECOUNT=5
+```
 
 ## Running Tests
 

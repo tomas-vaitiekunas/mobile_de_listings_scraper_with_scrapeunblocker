@@ -37,8 +37,7 @@ To customize the ScrapeUnblocker API call (e.g., to enable JS rendering or speci
 ```python
 params = {
     "url": target_url,
-    "render_js": "true", # Example: Enable JavaScript rendering
-    "country": "de",     # Example: Use German proxies
+    "proxy_country": "de",     # Example: Use German proxies
 }
 ```
 

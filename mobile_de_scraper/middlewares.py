@@ -26,8 +26,6 @@ class ScrapeUnblockerMiddleware:
         target_url = request.url
         params = {
             "url": target_url,
-            "render_js": "true",
-            "proxy_type": "residential",
         }
 
         # We replace the request URL with the ScrapeUnblocker API URL
